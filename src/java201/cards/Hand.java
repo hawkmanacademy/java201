@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class Hand {
 	private int maxCards;
-	Stack<Card> cards = new Stack<Card>();
+	private Stack<Card> cards = new Stack<Card>();
 
 	public Hand(int maxCards) {
 		this.maxCards = maxCards;
@@ -31,6 +31,15 @@ public class Hand {
 		if (cards.size() > 0)
 		{
 			card = cards.pop();
+		}
+		return card;
+	}
+	
+	public Card peek() {
+		Card card = null;
+		if (cards.size() > 0)
+		{
+			card = cards.peek();
 		}
 		return card;
 	}

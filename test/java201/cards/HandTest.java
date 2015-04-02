@@ -12,7 +12,7 @@ public class HandTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		hand = new Hand(0);
+		hand = new Hand(2);
 	}
 
 	@Test
@@ -20,7 +20,6 @@ public class HandTest {
 		Card card1 = new Card(2,"D");
 		Card card2 = new Card(10,"D");
 		
-		hand = new Hand(2);
 		hand.addCard(card1);
 		hand.addCard(card2);
 		
@@ -35,7 +34,6 @@ public class HandTest {
 		Card card1 = new Card(2,"D");
 		Card card2 = new Card(10,"D");
 		
-		hand = new Hand(2);
 		hand.addCard(card1);
 		hand.addCard(card2);
 		
@@ -43,6 +41,37 @@ public class HandTest {
 		assertNotNull(hand.drawCard());
 		assertNotNull(hand.drawCard());
 		assertNull(hand.drawCard());
+	}
+	
+	@Test
+	public void testDrawCardsForHandCreatedWithNoCards() {;
+		assertEquals(0, hand.getNoOfCards());
+		assertNull(hand.drawCard());
+	}
+	
+	@Test
+	public void testPeakCardsForHandCreatedWithTwoCardsStillHasTwoRemaining() {
+		Card card1 = new Card(2,"D");
+		Card card2 = new Card(10,"D");
+		
+		hand = new Hand(2);
+		hand.addCard(card1);
+		hand.addCard(card2);
+		
+		assertEquals(2, hand.getNoOfCards());
+		assertNotNull(hand.peek());
+		assertEquals("there should still be two cards left in hand",2, hand.getNoOfCards());
+		
+	}
+	
+	@Test
+	public void testPeakCardsForHandCreatedNoCardsStillHasNo() {		
+		hand = new Hand(2);
+		
+		assertEquals(0, hand.getNoOfCards());
+		assertNull(hand.peek());
+		assertEquals("there should still be no cards left in hand",0, hand.getNoOfCards());
+		
 	}
 	
 	@After
