@@ -50,7 +50,7 @@ public class HandTest {
 	}
 	
 	@Test
-	public void testPeakCardsForHandCreatedWithTwoCardsStillHasTwoRemaining() {
+	public void givenAHandWhenPeakIsCalledThenTheCardsRemainInTheHand() {
 		Card card1 = new Card(2,"D");
 		Card card2 = new Card(10,"D");
 		
@@ -65,7 +65,7 @@ public class HandTest {
 	}
 	
 	@Test
-	public void testPeakCardsForHandCreatedNoCardsStillHasNo() {		
+	public void givenAHandWhenPeakIsCalledOnAHandWithNoCardsThereShouldStillBeNoCards() {		
 		hand = new Hand(2);
 		
 		assertEquals(0, hand.getNoOfCards());

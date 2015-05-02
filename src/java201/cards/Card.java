@@ -1,11 +1,12 @@
 package java201.cards;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Card {
 
-	private static final List<String> SUITES = Arrays.asList("D","C","H","S");
+	private static final List<String> SUITES = Collections.unmodifiableList(Arrays.asList("D","C","H","S"));
 	
 	private  int rank;
 	
@@ -18,6 +19,10 @@ public class Card {
 		
 		validateSuite(suite);
 		this.suite = suite;
+	}
+
+	public Card(Suite suite, Rank rank) {
+		this(rank.intvalue(),suite.name().charAt(0) +"");
 	}
 
 	public int getRank() {
@@ -38,7 +43,6 @@ public class Card {
 		this.suite = suite;
 	}
 	
-
 	private void validateSuite(String suite) {
 		if (SUITES.contains(suite) == false){
 			throw new IllegalArgumentException("invalid suite " + suite);
@@ -50,6 +54,5 @@ public class Card {
 			throw new IllegalArgumentException("invalid rank " + rank);
 		}
 	}
-
 	
 }
